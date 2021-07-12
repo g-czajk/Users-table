@@ -1,27 +1,51 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
+  <div class="container mx-auto py-12">
+    <Table
+      :endpoint="endpoint"
+      :search="search"
+      :sorting="sorting"
+      :pagination="pagination"
+      @changeSorting="changeSorting"
+      @changeSearch="changeSearch"
+      @changePagination="changePagination"
+    />
+  </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
-import HelloWorld from './components/HelloWorld.vue';
+import { defineComponent, ref } from "vue";
+import Table from "./components/Table.vue";
 
 export default defineComponent({
-  name: 'App',
-  components: {
-    HelloWorld
-  }
+  name: "App",
+  components: { Table },
+  setup() {
+    const endpoint = ref<string>("https://jsonplaceholder.typicode.com/users");
+    const search = ref<boolean>(false);
+    const sorting = ref<boolean>(false);
+    const pagination = ref<boolean>(false);
+
+    const changeSorting: () => void = () => {
+      sorting.value = !sorting.value;
+    };
+
+    const changeSearch: () => void = () => {
+      search.value = !search.value;
+    };
+
+    const changePagination: () => void = () => {
+      pagination.value = !pagination.value;
+    };
+
+    return {
+      endpoint,
+      search,
+      sorting,
+      pagination,
+      changeSorting,
+      changeSearch,
+      changePagination,
+    };
+  },
 });
 </script>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
