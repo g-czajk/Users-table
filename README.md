@@ -1,24 +1,22 @@
-# olicom-task
+## Instructions on running locally
 
-## Project setup
-```
-npm install
-```
+**Clone this repo:**
 
-### Compiles and hot-reloads for development
 ```
-npm run serve
+  git clone https://github.com/g-czajk/Users-table.git
 ```
+**Go to the project directory:**
 
-### Compiles and minifies for production
 ```
-npm run build
+   cd Users-table
 ```
+**Install dependencies:**
 
-### Lints and fixes files
 ```
-npm run lint
+   npm install
 ```
+**Start dev server:**
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+```
+   npm run start
+```
